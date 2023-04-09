@@ -1,46 +1,56 @@
-const choices = ['rock', 'paper', 'scissors']
+let choices = ['rock', 'paper', 'scissors']
+let playerSelection;
+let computerSelection;
 
 function getComputerChoice() {
 	let randomChoice = Math.floor(Math.random() * 3);
 	return choices[randomChoice];
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 function playRound(playerSelection, computerSelection) {
-	// console.log(playerSelection)
+	computerSelection = getComputerChoice();
+	playerSelection = prompt('Rock, paper, scissors ?');
 	if (playerSelection.trim().toLowerCase() === computerSelection) {
+		console.log('')
+		console.log('PS: ', playerScore);
+		console.log('PcS: ', computerScore);
 		return 'Draw!';
 	}
 
-	if (playerSelection.trim().toLowerCase() === 'rock' && computerSelection === 'paper') {
-		return 'You loose! Papper beats rock!'
+	if (
+		(playerSelection.trim().toLowerCase() === 'rock' && computerSelection === 'scissors') ||
+		(playerSelection.trim().toLowerCase() === 'scissors' && computerSelection === 'paper') ||
+		(playerSelection.trim().toLowerCase() === 'paper' && computerSelection === 'rock')
+		) {
+		console.log('------')
+		++playerScore;
+		console.log('Your score: ', playerScore);
+		console.log('Computer score: ', computerScore);
+		return `You won, ${playerSelection} beats ${computerSelection}!`
 	}
 
-	if (playerSelection.trim().toLowerCase() === 'rock' && computerSelection === 'scissors') {
-		return 'You won! Rock beats scissors!'
-	}
-
-	if (playerSelection.trim().toLowerCase() === 'scissors' && computerSelection === 'rock') {
-		return 'You loose! Rock beats scissors!'
-	}
-
-	if (playerSelection.trim().toLowerCase() === 'scissors' && computerSelection === 'paper') {
-		return 'You won! Scissors beat paper'
-	}
-
-	if (playerSelection.trim().toLowerCase() === 'paper' && computerSelection === 'scissors') {
-		return 'You loose! Scissors beat paper!'
-	}
-
-	if (playerSelection.trim().toLowerCase() === 'paper' && computerSelection === 'rock') {
-		return 'You won! Paper beats rock!'
+	if (
+		(playerSelection.trim().toLowerCase() === 'rock' && computerSelection === 'paper') ||
+		(playerSelection.trim().toLowerCase() === 'paper' && computerSelection === 'scissors') ||
+		(playerSelection.trim().toLowerCase() === 'scissors' && computerSelection === 'rock')
+		) {
+		console.log('------')
+		++computerScore;
+		console.log('Your score: ', playerScore);
+		console.log('Computer score: ', computerScore);
+		return `You've lost this round, ${computerSelection} beats ${playerSelection}!`
 	}
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
+function game() {
+	for (let i = 0; playerScore < 3 && computerScore < 3; i++) {
+		console.log(playRound(playerSelection, computerSelection))
+	}
 
-console.log('p',playerSelection);
-console.log(computerSelection);
+	playerScore > computerScore ? console.log('Great! You won the game!') : console.log('Sorry! Yoy lost the game!');
+}
 
-console.log(playRound(playerSelection, computerSelection));
-
+game();
