@@ -6,17 +6,18 @@ const playerPoints = document.querySelector('#playerScore');
 const computerPoints = document.querySelector('#pcScore');
 const text = document.querySelector('#text');
 const cards = document.querySelectorAll('.cards__card');
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
 	let randomChoice = Math.floor(Math.random() * 3);
 	return choices[randomChoice];
 }
 
-let playerScore = 0;
-let computerScore = 0;
 
-playerPoints.textContent = playerScore;
-computerPoints.textContent = computerScore;
+
+// playerPoints.textContent = playerScore;
+// computerPoints.textContent = computerScore;
 
 cards.forEach(card => {
 	card.addEventListener('click', (e) => {
@@ -29,9 +30,6 @@ function playRound(playerSelection, computerSelection) {
 	computerSelection = getComputerChoice();
 
 	if (playerSelection === computerSelection) {
-		console.log('')
-		console.log('PS: ', playerScore);
-		console.log('PcS: ', computerScore);
 		text.textContent = 'It\'s a tie!';
 	}
 
@@ -40,14 +38,7 @@ function playRound(playerSelection, computerSelection) {
 		(playerSelection === 'scissors' && computerSelection === 'paper') ||
 		(playerSelection === 'paper' && computerSelection === 'rock')
 	) {
-		console.log('------')
-		if (playerScore > 4) {
-			console.log(11)
-			text.textContent = 'Great! You won the game!';
-		}
 		++playerScore;
-		console.log('Your score: ', playerScore);
-		console.log('Computer score: ', computerScore);
 		text.textContent = `You won, ${playerSelection} beats ${computerSelection}!`
 	}
 
@@ -56,15 +47,14 @@ function playRound(playerSelection, computerSelection) {
 		(playerSelection === 'paper' && computerSelection === 'scissors') ||
 		(playerSelection === 'scissors' && computerSelection === 'rock')
 	) {
-		console.log('------')
-		if (computerScore > 4) {
-			console.log(12)
-			text.textContent = 'Sorry! Yoy lost the game!';
-		}
 		++computerScore;
-		console.log('Your score: ', playerScore);
-		console.log('Computer score: ', computerScore);
 		text.textContent = `You've lost this round, ${computerSelection} beats ${playerSelection}!`
+	}
+
+	if (computerScore > 4) {
+		text.textContent = 'Sorry! You\'ve lost the game!';
+	} else if (playerScore > 4) {
+		text.textContent = 'Great! You won the game!';
 	}
 
 	playerPoints.textContent = playerScore;
@@ -88,10 +78,8 @@ game();
 restartBtn.addEventListener('click', restart)
 
 function restart() {
-	console.log('11')
 	playerScore = 0;
 	computerScore = 0;
-
 	playerPoints.textContent = playerScore;
 	computerPoints.textContent = computerScore;
 	text.textContent = 'Let\'s start our game! Make a choice.'
