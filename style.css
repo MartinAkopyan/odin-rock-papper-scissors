@@ -43,11 +43,140 @@ body {
 
 .header {
 	background-color: var(--c-light);
-	padding-block: 20px 30px;
+	padding-block: 30px 15px;
 }
 
 .main-title {
 	font-size: 36px;
 	color: var(--c-dark);
 	text-align: center;
+}
+
+
+.scoreboards {
+	position: relative;
+}
+
+.scoreboards__text {
+	background-color: var(--c-primary);
+	padding: 20px 40px;
+	max-width: 250px;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.btn {
+	font-size: 20px;
+	max-width: 250px;
+	padding: 15px;
+	font-family: 'Press Start 2P', serif;
+	color: var(--c-primary-dark);
+	position:absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	transition: all ease 0.2s;
+}
+
+.btn:hover {
+	background-color: var(--c-primary);
+	color: var(--c-light)
+}
+
+.scoreboards-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-inline: -20px;
+}
+
+.board {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--c-primary);
+	padding: 100px;
+}
+
+.board__score {
+	font-size: 96px;
+}
+
+.borad__player {
+	font-size: 40px;
+	margin-top: 24px;
+}
+
+.cards {
+	margin-top: 120px;
+	display: flex;
+	gap: 36px;
+	justify-content: center;
+}
+
+.cards__card {
+	width: 328px;
+	height: 336px;
+	background-color: var(--c-primary);
+	position: relative;
+	border-radius: 29px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 48px;
+	border: 1px solid var(--c-light);
+	transition: all ease 0.3s;
+	cursor: pointer;
+}
+
+.cards__card::before {
+	content: '';
+	width: 80%;
+	height: 80%;
+	border-radius: 50%;
+	background: radial-gradient(50% 50% at 50% 50%, #ffffff46 0%, rgba(255, 255, 255, 0) 100%);
+	position: absolute;
+	top: 0%;
+}
+
+.cards__card-title {
+	font-size: 32px;
+	text-align: center;
+}
+
+.cards__card-img {
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	top: -15%;
+	left: 50%;
+	transform: translateX(-47%);
+	transition: all ease 0.3s;
+}
+
+.cards__card:hover {
+	box-shadow: 0px 2px 15px rgba(255, 255, 255, 0.25);	
+}
+
+.cards__card:hover .cards__card-img {
+	top: -30%;
+}
+
+.cards__card-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.cards__card-img--rock {
+	left: 50%;
+	transform: translateX(-47%);
 }
