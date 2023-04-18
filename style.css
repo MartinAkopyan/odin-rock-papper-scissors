@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/*Обнуление*/
+*,*:before,*:after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,
+:active {
+	outline: none;
+}
+a:focus,
+a:active {
+	outline: none;
+}
+
+.container	{
+	max-width: 1440px;
+	margin-inline: auto;
+	padding-inline: 20px;
+}
+
+:root {
+	--c-primary: #7ABBF8;
+	--c-primary-dark: #2F6DA6;
+	--c-light: #fff;
+	--c-dark: #333;
+}
+
+body {
+	background-color: var(--c-primary-dark);
+	font-family: 'Press Start 2P', serif;
+	color: var(--c-light);
+}
+
+.header {
+	background-color: var(--c-light);
+	padding-block: 20px 30px;
+}
+
+.main-title {
+	font-size: 36px;
+	color: var(--c-dark);
+	text-align: center;
+}
