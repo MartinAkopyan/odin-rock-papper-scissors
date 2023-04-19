@@ -72,7 +72,7 @@ body {
 
 .btn {
 	font-size: 20px;
-	max-width: 250px;
+	width: 280px;
 	padding: 15px;
 	font-family: 'Press Start 2P', serif;
 	color: var(--c-primary-dark);
@@ -101,7 +101,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	border: 1px solid var(--c-primary);
-	padding: 100px;
+	padding: 40px 100px;
 }
 
 .board__score {
